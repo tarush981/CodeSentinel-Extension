@@ -1,0 +1,107 @@
+{
+  "name": "code-sentinal-extension",
+  "displayName": "Code Sentinal",
+  "description": "AI-powered real-time DSA mentor inside VS Code.",
+  "version": "0.0.1",
+  "publisher": "your-name-or-id",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Code Sentinal",
+      "properties": {
+        "codesentinal.backendUrl": {
+          "type": "string",
+          "default": "http://localhost:8000/analyze",
+          "description": "URL of the Code Sentinal FastAPI backend /analyze endpoint."
+        },
+        "codesentinal.personality": {
+          "type": "string",
+          "enum": [
+            "genz",
+            "mentor",
+            "interview"
+          ],
+          "default": "genz",
+          "description": "Personality style for Code Sentinal messages."
+        },
+        "codesentinal.difficulty": {
+          "type": "string",
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ],
+          "default": "beginner",
+          "description": "Difficulty level for questions and feedback."
+        },
+        "codesentinal.analysisDebounceMs": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 500,
+          "description": "Debounce delay (in ms) before sending code to backend after edits."
+        },
+        "codesentinal.enableStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show detected concept and complexity in the status bar."
+        },
+        "codesentinal.quizCooldownSeconds": {
+          "type": "number",
+          "default": 90,
+          "minimum": 60,
+          "maximum": 600,
+          "description": "Minimum seconds between \"Want to try a quiz?\" prompts (cooldown)."
+        },
+        "codesentinal.periodicQuestionIntervalSeconds": {
+          "type": "number",
+          "default": 30,
+          "minimum": 30,
+          "maximum": 300,
+          "description": "How often (in seconds) to offer a new question when you're actively coding. Set high to reduce frequency."
+        },
+        "codesentinal.idleThresholdSeconds": {
+          "type": "number",
+          "default": 120,
+          "minimum": 30,
+          "maximum": 600,
+          "description": "If no edit happened in this many seconds, you're considered idle and periodic questions are skipped."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "codesentinal.openPanel",
+        "title": "Code Sentinal: Open Assistant Panel"
+      },
+      {
+        "command": "codesentinal.analyzeNow",
+        "title": "Code Sentinal: Analyze current file now"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "echo \"No linter configured\"",
+    "test": "echo \"No tests yet\""
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.0"
+  }
+}

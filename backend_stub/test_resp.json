@@ -1,0 +1,19 @@
+{
+  "pattern": "Divide and Conquer",
+  "concept": "Binary Search",
+  "complexity": "O(log n)",
+  "spaceComplexity": "O(1)",
+  "suggestion": "Consider adding input validation to handle edge cases such as an empty array or a non-sorted array",
+  "question": "Yo coder, what's the main purpose of the 'mid' variable in this binary search code? \ud83e\udd14",
+  "options": [
+    "To store the value of the target element \ud83c\udfaf",
+    "To keep track of the number of iterations \ud83d\udd04",
+    "To calculate the middle index of the current search range \ud83d\udccf",
+    "To store the index of the smallest element in the array \ud83d\udd1d"
+  ],
+  "correct_index": 2,
+  "explanation": "This loop looking heavy \ud83d\udc40, but the 'mid' variable is used to calculate the middle index of the current search range, which is a key step in the binary search algorithm \ud83d\udd0d",
+  "tip": "Use binary search when the input array is sorted",
+  "is_meaningful_dsa": true,
+  "hover_summary": "Binary search algorithm with a time complexity of O(log n) and space complexity of O(1). It finds an element in a sorted array by repeatedly dividing the search interval in half. **Tip:** Ensure the input array is sorted for optimal performance."
+}
